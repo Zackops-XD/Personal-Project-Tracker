@@ -122,5 +122,14 @@ def delete_project_page(project_id):
 
     return redirect(url_for("projects"))
 
+@app.route("/projects/<int:project_id>")
+def project_details(project_id):
+    project = get_project(project_id)
+
+    return render_template(
+        "project_details.html",
+        project=project
+    )
+
 if __name__ == "__main__":
     app.run(debug=True)

@@ -24,7 +24,11 @@
         {% for project in projects %}
         <tr>
             <td>{{ project[0] }}</td>
-            <td>{{ project[1] }}</td>
+            <td>
+                <a class="project-name-link" href="{{ url_for('project_details', project_id=project[0]) }}">
+                    {{ project[1] }}
+                </a>
+            </td>
             <td>{{ project[3] }}</td>
             <td>{{ project[4] }}</td>
             <td>{{ project[5] }}</td>

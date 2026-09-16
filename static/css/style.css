@@ -172,3 +172,20 @@ form {
     border-radius: 5px;
     cursor: pointer;
 }
+
+.project-name-link {
+    text-decoration: none;
+}
+
+.project-details {
+    max-width: 700px;
+}
+
+.project-details h2 {
+    margin-top: 10px;
+    margin-bottom: 20px;
+}
+
+.project-details-info p {
+    margin: 10px 0;
+}

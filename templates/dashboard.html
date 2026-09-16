@@ -31,8 +31,12 @@
     <!-- Projects -->
     {% for item in current_projects %}
     <div class="project-card">
-        <h3>{{ item.project[1] }}</h3>
-        
+        <h3>
+            <a class="project-name-link" href="{{ url_for('project_details', project_id=item.project[0]) }}">
+                {{ item.project[1] }}
+            </a>
+        </h3> 
+
         <div class="project-info">
             <p>Status: {{ item.project[3] }}</p>
             <p>Priority: {{ item.project[4] }}</p>

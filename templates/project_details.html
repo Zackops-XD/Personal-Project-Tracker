@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+
+{% block title %}
+    Project Details
+{% endblock %}
+
+{% block content %}
+
+<section class="project-details">
+
+    <h1>Project Details</h1>
+
+    <h2>{{ project[1] }}</h2>
+
+    <div class="project-details-info">
+        <p><strong>Description:</strong> {{ project[2] }}</p>
+        <p><strong>Status:</strong> {{ project[3] }}</p>
+        <p><strong>Priority:</strong> {{ project[4] }}</p>
+        <p><strong>Deadline:</strong> {{ project[5] }}</p>
+    </div>
+
+    <div class="dashboard-actions">
+        <a class="action-button"
+           href="{{ url_for('edit_project_page', project_id=project[0]) }}">
+            Edit Project
+        </a>
+
+        <a class="action-button"
+           href="{{ url_for('projects') }}">
+            Back to Projects
+        </a>
+    </div>
+
+</section>
+
+{% endblock %}
