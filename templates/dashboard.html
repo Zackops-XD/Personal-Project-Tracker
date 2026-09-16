@@ -1,0 +1,66 @@
+{% extends "base.html" %}
+
+{% block title %}
+    Dashboard
+{% endblock %}
+
+{% block content %}
+
+<section>
+    <h2>Current Projects</h2>
+
+    <!-- Filter -->
+    <form class="filter-form" method="GET" action="{{ url_for('dashboard')}}">
+        <select name="filter" onchange="this.form.submit()">
+            <option value="none" {% if filter_type == "none" %}selected{% endif %}>
+                None
+            </option>
+
+            <option value="urgent" {% if filter_type == "urgent" %}selected{% endif %}>
+                Most Urgent
+            </option>
+
+            <option value="priority" {% if filter_type == "priority" %}selected{% endif %}>
+                Highest Priority
+            </option>
+        </select>
+    </form>
+
+    
+
+    <!-- Projects -->
+    {% for item in current_projects %}
+    <div class="project-card">
+        <h3>{{ item.project[1] }}</h3>
+        
+        <div class="project-info">
+            <p>Status: {{ item.project[3] }}</p>
+            <p>Priority: {{ item.project[4] }}</p>
+            <p>Urgency: {{ item.urgency }}</p>
+        </div>
+
+        <div class="project-deadline">
+
+            {% if item.project[5] %}
+                <p>Deadline: {{ item.deadline_date }}</p>
+            {% endif %}
+
+            {% if item.days_remaining is none %}
+                <p>No Deadline</p>
+            {% elif item.days_remaining < 0 %}
+                <p>Overdue by {{ item.days_remaining|abs }}</p>
+            {% else %}
+                <p>Due in {{ item.days_remaining }} days</p>
+            {% endif %}
+        </div>
+   </div>
+    {% endfor %}
+
+</section>
+
+<section class="dashboard-actions">
+    <a class="action-button" href="{{ url_for('projects') }}">Manage Projects</a>
+    <a class="action-button" href="{{ url_for('add_project_page') }}">Add Projects</a>
+</section>
+
+{% endblock %}

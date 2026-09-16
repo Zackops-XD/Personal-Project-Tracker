@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Project Tracker{% endblock %}</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}"
+</head>
+<body>
+    <nav>
+        <a href="{{ url_for('dashboard') }}">
+            <h1>Project Tracker</h1>
+        </a>
+
+        <div>
+            <a href="{{ url_for('dashboard') }}">Dashboard</a>
+            <a href="{{ url_for('projects') }}">Projects</a>
+            <a href="{{ url_for('add_project_page') }}">Add Project</a>
+        </div>
+    </nav>
+
+    <main>
+        {% block content %}
+        {% endblock %}
+    </main>
+
+
+</body>
+</html>

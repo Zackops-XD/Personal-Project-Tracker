@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+
+{% block title %}
+    Add Project
+{% endblock %}
+
+{% block content %}
+<form class="project-form" method="POST" action="{{ url_for('add_project_page') }}">
+    <label for="name">Name</label>
+    <input type="text" id="name" name="name" required>
+
+    <label for="description">Description</label>
+    <textarea id="description" name="description" rows="4" cols="50" 
+    placeholder="Write your Description here..."></textarea>
+
+    <label for="status">Status</label>
+    <select id="status" name="status" required>
+        <option value="" selected disabled>-- Select Status --</option>
+        <option value="Not Started">Not Started</option>
+        <option value="In Progress">In Progress</option>
+        <option value="Completed">Completed</option>
+        <option value="On Hold">On Hold</option>
+        <option value="Cancelled">Cancelled</option>
+    </select>
+
+    <label for="priority">Priority</label>
+    <select id="priority" name="priority" required>
+        <option value="" selected disabled>-- Select Priority --</option>
+        <option value="High">High</option>
+        <option value="Medium">Medium</option>
+        <option value="Low">Low</option>
+    </select>
+
+    <label for="deadline">Deadline</label>
+    <input type="date" id="deadline" name="deadline">
+
+    <button class="confirm-button" type="submit">Confirm</button>
+</form>
+{% endblock %}

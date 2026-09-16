@@ -1,0 +1,56 @@
+{% extends "base.html" %}
+
+{% block title %}
+    Projects
+{% endblock %}
+
+{% block content %}
+<h1>My Projects</h1>
+
+<table class="projects-table">
+
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Status</th>
+            <th>Priority</th>
+            <th>Deadline</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+
+    <tbody>
+        {% for project in projects %}
+        <tr>
+            <td>{{ project[0] }}</td>
+            <td>{{ project[1] }}</td>
+            <td>{{ project[3] }}</td>
+            <td>{{ project[4] }}</td>
+            <td>{{ project[5] }}</td>
+
+            <td>
+                <div class="table-actions">
+                    <a href="{{ url_for('edit_project_page', project_id=project[0]) }}"
+                    class="action-button">
+                        Edit
+                    </a>
+
+                    <form method="POST"
+                        action="{{ url_for('delete_project_page', project_id=project[0]) }}"
+                        class="delete-form">
+                        <button type="submit" class="action-button">
+                            Delete
+                        </button>
+                    </form>
+                </div>
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+
+</table>
+
+<a class="home-button" href="{{ url_for('dashboard') }}" >Back Home</a>
+
+{% endblock %}

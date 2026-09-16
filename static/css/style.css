@@ -1,0 +1,174 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+}
+
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 30px;
+}
+
+nav a {
+    text-decoration: none;
+}
+
+nav div {
+    display: flex;
+    gap: 20px;
+} 
+
+nav h1 {
+    margin: 0;
+}
+
+main {
+    padding: 30px;
+}
+
+.project-card {
+    padding: 30px;
+    margin-bottom: 20px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+}
+
+.project-card h3 {
+    margin-top: 0;
+    margin-bottom: 10px;
+}
+
+.project-info {
+    display: flex;
+    gap: 20px;
+}
+
+.project-deadline {
+    margin-top: 15px;
+}
+
+form {
+    margin-bottom: 20px;
+}
+
+.filter-form {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.filter-form select {
+    padding: 8px 12px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    font-size: 14px;
+}
+
+.project-info p {
+    margin: 5px 0;
+}
+
+.dashboard-actions {
+    display: flex;
+    gap: 10px;
+    margin-top: 20px;
+}
+
+.action-button {
+    display: inline-block;
+    padding: 10px 15px;
+    text-decoration: none;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+}
+
+.project-card h3 {
+    margin-top: 0;
+    margin-bottom: 15px;
+}
+
+.project-deadline {
+    margin-top: 15px;
+    padding-top: 10px;
+    border-top: 1px solid #eee;
+}
+
+.projects-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+.projects-table th,
+.projects-table td {
+    padding: 12px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+
+.projects-table th {
+    font-weight: bold;
+    background-color: #f5f5f5;
+}
+
+.table-actions {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+}
+
+.action-button {
+    display: inline-block;
+    padding: 6px 10px;
+    text-decoration: none;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background: none;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+.delete-form {
+    margin: 0;
+}
+
+.home-button {
+    display: inline-block;
+    margin-top: 20px;
+    padding: 8px 12px;
+    text-decoration: none;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.project-form {
+    max-width: 500px;
+}
+
+.project-form input,
+.project-form textarea,
+.project-form select {
+    width: 100%;
+    margin-bottom: 15px;
+    padding: 8px;
+    font-size: 14px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.project-form label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+.confirm-button {
+    padding: 8px 15px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    cursor: pointer;
+}
