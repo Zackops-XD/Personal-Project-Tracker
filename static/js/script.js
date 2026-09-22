@@ -22,6 +22,10 @@ const projectRows = document.querySelectorAll(
     ".projects-table tbody tr"
 );
 
+const noProjectsMessage = document.querySelector(
+    "#no-projects-message"
+);
+
 const tableBody = document.querySelector(".projects-table tbody");
 
 searchInput.addEventListener("input", function() {
@@ -30,6 +34,8 @@ searchInput.addEventListener("input", function() {
 
     const startsWithMatches = [];
     const containsMatches = [];
+
+    let hasMatches = false;
 
     for (const row of projectRows) {
 
@@ -49,10 +55,14 @@ searchInput.addEventListener("input", function() {
 
         if (isStartsWith) {
 
+            hasMatches = true;
+
             row.style.display = "";
             startsWithMatches.push(row);
 
         } else if (isContains) {
+
+            hasMatches = true;
 
             row.style.display = "";
             containsMatches.push(row);
@@ -71,6 +81,12 @@ searchInput.addEventListener("input", function() {
 
     for (const row of containsMatches) {
         tableBody.appendChild(row);
+    }
+
+    if (hasMatches) {
+    noProjectsMessage.style.display = "none";
+    } else {
+        noProjectsMessage.style.display = "";
     }
 
 });
