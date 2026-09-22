@@ -18,6 +18,12 @@ for (const form of deleteForms) {
 
 const searchInput = document.querySelector("#project-search");
 
+const statusFilter = document.querySelector("#status-filter");
+
+statusFilter.addEventListener("change", function() {
+    // filtering logic
+});
+
 const projectRows = document.querySelectorAll(
     ".projects-table tbody tr"
 );
@@ -28,9 +34,9 @@ const noProjectsMessage = document.querySelector(
 
 const tableBody = document.querySelector(".projects-table tbody");
 
-searchInput.addEventListener("input", function() {
-
+function updateProjects() {
     const searchText = searchInput.value;
+    const selectedStatus = statusFilter.value;
 
     const startsWithMatches = [];
     const containsMatches = [];
@@ -39,41 +45,46 @@ searchInput.addEventListener("input", function() {
 
     for (const row of projectRows) {
 
-        const projectNameElement = row.querySelector(
-            ".project-name-link"
-        );
+    const projectNameElement = row.querySelector(
+        ".project-name-link"
+    );
 
-        const projectName = projectNameElement.textContent.trim();
+    const projectName = projectNameElement.textContent.trim();
 
-        const isStartsWith = projectName
-            .toLowerCase()
-            .startsWith(searchText.toLowerCase());
+    const isStartsWith = projectName
+        .toLowerCase()
+        .startsWith(searchText.toLowerCase());
 
-        const isContains = projectName
-            .toLowerCase()
-            .includes(searchText.toLowerCase());
+    const isContains = projectName
+        .toLowerCase()
+        .includes(searchText.toLowerCase());
 
-        if (isStartsWith) {
+    const projectStatus = row.cells[1].textContent.trim();
 
-            hasMatches = true;
+    const isStatusMatch =
+        selectedStatus === "all" ||
+        projectStatus === selectedStatus;
 
-            row.style.display = "";
-            startsWithMatches.push(row);
+    if (isStartsWith && isStatusMatch) {
 
-        } else if (isContains) {
+        hasMatches = true;
+        
+        row.style.display = "";
+        startsWithMatches.push(row);
 
-            hasMatches = true;
+    } else if (isContains && isStatusMatch) {
 
-            row.style.display = "";
-            containsMatches.push(row);
+        hasMatches = true;
 
-        } else {
+        row.style.display = "";
+        containsMatches.push(row);
 
-            row.style.display = "none";
+    } else {
 
-        }
+        row.style.display = "none";
 
     }
+}
 
     for (const row of startsWithMatches) {
         tableBody.appendChild(row);
@@ -89,4 +100,12 @@ searchInput.addEventListener("input", function() {
         noProjectsMessage.style.display = "";
     }
 
+}
+
+searchInput.addEventListener("input", function() {
+    updateProjects();
+});
+
+statusFilter.addEventListener("change", function() {
+    updateProjects();
 });

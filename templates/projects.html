@@ -9,6 +9,21 @@
 
 <input type="text" id="project-search" placeholder="Search projects...">
 
+<p id="no-projects-message" style="display: none;">
+    No Projects Found
+</p>
+
+<label for="status-filter">Status</label>
+
+<select id="status-filter">
+    <option value="all">All</option>
+    <option value="Not Started">Not Started</option>
+    <option value="In Progress">In Progress</option>
+    <option value="Completed">Completed</option>
+    <option value="On Hold">On Hold</option>
+    <option value="Cancelled">Cancelled</option>
+</select>
+
 <table class="projects-table">
 
     <thead>
