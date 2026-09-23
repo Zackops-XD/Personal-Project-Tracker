@@ -37,67 +37,69 @@ function updateProjects() {
     const selectedStatus = statusFilter.value;
     const selectedPriority = priorityFilter.value;
 
-    const startsWithMatches = [];
-    const containsMatches = [];
+    const projectMatches = [];
 
     let hasMatches = false;
 
     for (const row of projectRows) {
 
-    const projectNameElement = row.querySelector(
-        ".project-name-link"
-    );
+        const projectNameElement = row.querySelector(
+            ".project-name-link"
+        );
 
-    const projectName = projectNameElement.textContent.trim();
+        const projectName = projectNameElement.textContent.trim();
 
-    const isStartsWith = projectName
-        .toLowerCase()
-        .startsWith(searchText.toLowerCase());
+        const isStartsWith = projectName
+            .toLowerCase()
+            .startsWith(searchText.toLowerCase());
 
-    const isContains = projectName
-        .toLowerCase()
-        .includes(searchText.toLowerCase());
+        const isContains = projectName
+            .toLowerCase()
+            .includes(searchText.toLowerCase());
 
-    const projectStatus = row.cells[1].textContent.trim();
+        const projectStatus = row.cells[1].textContent.trim();
 
-    // Status
-    const isStatusMatch =
-        selectedStatus === "all" ||
-        projectStatus === selectedStatus;
+        // Status
+        const isStatusMatch =
+            selectedStatus === "all" ||
+            projectStatus === selectedStatus;
 
-    // Priority
-    const projectPriority = row.cells[2].textContent.trim();
+        // Priority
+        const projectPriority = row.cells[2].textContent.trim();
 
-    const isPriorityMatch =
-    selectedPriority === "all" ||
-    projectPriority === selectedPriority;
+        const isPriorityMatch =
+        selectedPriority === "all" ||
+        projectPriority === selectedPriority;
 
-    if (isStartsWith && isStatusMatch && isPriorityMatch) {
+        if (isStartsWith && isStatusMatch && isPriorityMatch) {
+            hasMatches = true;
+            row.style.display = "";
+            projectMatches.push(row);
 
-        hasMatches = true;
-        
-        row.style.display = "";
-        startsWithMatches.push(row);
+        } else if (isContains && isStatusMatch && isPriorityMatch) {
+            hasMatches = true;
+            row.style.display = "";
+            projectMatches.push(row);
 
-    } else if (isContains && isStatusMatch && isPriorityMatch) {
+        } else {
+            row.style.display = "none";
 
-        hasMatches = true;
-
-        row.style.display = "";
-        containsMatches.push(row);
-
-    } else {
-
-        row.style.display = "none";
+        }
 
     }
-}
+    
+    projectMatches.sort(function(a, b) {
 
-    for (const row of startsWithMatches) {
-        tableBody.appendChild(row);
-    }
+        const deadlineA = a.cells[3].textContent.trim();
+        const deadlineB = b.cells[3].textContent.trim();
 
-    for (const row of containsMatches) {
+        const dateA = new Date(deadlineA);
+        const dateB = new Date(deadlineB);
+
+        return dateA - dateB;
+    });
+            
+    for (const row of projectMatches) {
         tableBody.appendChild(row);
     }
 
