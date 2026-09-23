@@ -20,9 +20,7 @@ const searchInput = document.querySelector("#project-search");
 
 const statusFilter = document.querySelector("#status-filter");
 
-statusFilter.addEventListener("change", function() {
-    // filtering logic
-});
+const priorityFilter = document.querySelector("#priority-filter");
 
 const projectRows = document.querySelectorAll(
     ".projects-table tbody tr"
@@ -37,6 +35,7 @@ const tableBody = document.querySelector(".projects-table tbody");
 function updateProjects() {
     const searchText = searchInput.value;
     const selectedStatus = statusFilter.value;
+    const selectedPriority = priorityFilter.value;
 
     const startsWithMatches = [];
     const containsMatches = [];
@@ -61,18 +60,26 @@ function updateProjects() {
 
     const projectStatus = row.cells[1].textContent.trim();
 
+    // Status
     const isStatusMatch =
         selectedStatus === "all" ||
         projectStatus === selectedStatus;
 
-    if (isStartsWith && isStatusMatch) {
+    // Priority
+    const projectPriority = row.cells[2].textContent.trim();
+
+    const isPriorityMatch =
+    selectedPriority === "all" ||
+    projectPriority === selectedPriority;
+
+    if (isStartsWith && isStatusMatch && isPriorityMatch) {
 
         hasMatches = true;
         
         row.style.display = "";
         startsWithMatches.push(row);
 
-    } else if (isContains && isStatusMatch) {
+    } else if (isContains && isStatusMatch && isPriorityMatch) {
 
         hasMatches = true;
 
@@ -109,3 +116,7 @@ searchInput.addEventListener("input", function() {
 statusFilter.addEventListener("change", function() {
     updateProjects();
 });
+
+priorityFilter.addEventListener("change", function() {
+    updateProjects();
+})
