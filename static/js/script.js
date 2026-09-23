@@ -122,3 +122,15 @@ statusFilter.addEventListener("change", function() {
 priorityFilter.addEventListener("change", function() {
     updateProjects();
 })
+
+// Reset Button
+const resetFilters = document.querySelector("#reset-filters");
+
+resetFilters.addEventListener("click", function() {
+
+    searchInput.value = "";
+    statusFilter.value = "all";
+    priorityFilter.value = "all";
+
+    updateProjects();
+});
