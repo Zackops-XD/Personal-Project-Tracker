@@ -7,33 +7,35 @@
 {% block content %}
 <h1>My Projects</h1>
 
-<input type="text" id="project-search" placeholder="Search projects...">
+<div class="project-filters">
+    <input type="text" id="project-search" placeholder="Search projects...">
 
-<p id="no-projects-message" style="display: none;">
-    No Projects Found
-</p>
+    <p id="no-projects-message" style="display: none;">
+        No Projects Found
+    </p>
 
-<label for="status-filter">Status</label>
+    <label for="status-filter">Status</label>
 
-<select id="status-filter">
-    <option value="all">All</option>
-    <option value="Not Started">Not Started</option>
-    <option value="In Progress">In Progress</option>
-    <option value="Completed">Completed</option>
-    <option value="On Hold">On Hold</option>
-    <option value="Cancelled">Cancelled</option>
-</select>
+    <select id="status-filter">
+        <option value="all">All</option>
+        <option value="Not Started">Not Started</option>
+        <option value="In Progress">In Progress</option>
+        <option value="Completed">Completed</option>
+        <option value="On Hold">On Hold</option>
+        <option value="Cancelled">Cancelled</option>
+    </select>
 
-<label for="priority-filter">Priority</label>
+    <label for="priority-filter">Priority</label>
 
-<select id="priority-filter">
-    <option value="all">All</option>
-    <option value="High">High</option>
-    <option value="Medium">Medium</option>
-    <option value="Low">Low</option>
-</select>
+    <select id="priority-filter">
+        <option value="all">All</option>
+        <option value="High">High</option>
+        <option value="Medium">Medium</option>
+        <option value="Low">Low</option>
+    </select>
 
-<button type="button" id="reset-filters">Reset Filters</button>
+    <button type="button" id="reset-filters" class="reset-button">Reset Filters</button>
+</div>
 
 <table class="projects-table">
 

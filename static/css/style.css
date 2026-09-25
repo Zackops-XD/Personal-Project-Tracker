@@ -237,3 +237,56 @@ form {
 .project-details-info p {
     margin: 10px 0;
 }
+
+/* Project Filters */
+
+.project-filters {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 20px;
+    flex-wrap: wrap;
+}
+
+.project-filters input,
+.project-filters select {
+    padding: 8px 12px;
+    font-size: 14px;
+    border: 1px solid #60a5fa;
+    border-radius: 5px;
+    background-color: #111827;
+    color: white;
+}
+
+.project-filters input {
+    width: 250px;
+}
+
+.project-filters input::placeholder {
+    color: #9ca3af;
+}
+
+.project-filters input:focus,
+.project-filters select:focus {
+    outline: none;
+    border-color: #93c5fd;
+}
+
+.project-filters label {
+    color: white;
+    font-weight: bold;
+}
+
+.reset-button {
+    padding: 8px 14px;
+    border: 1px solid #60a5fa;
+    border-radius: 5px;
+    background-color: #111827;
+    color: #60a5fa;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+.reset-button:hover {
+    background-color: #1e3a5f;
+}
